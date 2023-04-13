@@ -2,7 +2,7 @@
   <div class="inputBox shadow">
     <input type="text" v-model="newTodoItem" v-on:keyup.enter="addTodo" />
     <!-- <button v-on:click="addTodo">add</button> -->
-    <span class="addContainer" @click="addTodo">
+    <span class="addContainer" v-on:click="addTodo">
       <i class="far fa-calendar-plus addBtn"></i>
     </span>
   </div>
@@ -22,7 +22,6 @@ export default {
     },
     clearInput: function () {
       this.newTodoItem = " ";
-      console.log("실행됨");
     },
   },
 };
