@@ -3,8 +3,8 @@
     <input type="text" v-model="newTodoItem" v-on:keyup.enter="addTodo" />
     <!-- <button v-on:click="addTodo">add</button> -->
     <span class="addContainer" v-on:click="addTodo">
-      <i class="far fa-calendar-plus addBtn"></i>
-    </span>
+      <i class="far fa-calendar-plus addBtn"></i> </span
+    >-->
   </div>
 </template>
 
