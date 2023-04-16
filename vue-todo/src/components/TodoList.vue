@@ -3,8 +3,10 @@
     <ul>
       <li v-for="todoItem in todoItems" v-bind:key="todoItem" class="shadow">
         {{ todoItem }}
+
         <span class="removeBtn" v-on:click="removeTodo">
-          <i class="fas fa-trash-alt"></i>
+          <button>delete</button>
+          <!--<i class="fas fa-trash-alt"></i>-->
         </span>
       </li>
     </ul>
