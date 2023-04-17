@@ -1,12 +1,10 @@
 <template>
   <div>
     <ul>
-      <li v-for="todoItem in todoItems" v-bind:key="todoItem" class="shadow">
-        {{ todoItem }}
-
-        <span class="removeBtn" v-on:click="removeTodo">
+      <li v-for="(todoItem, index) in todoItems" :key="index" class="shadow">
+        {{ todoItem.value }}
+        <span class="removeBtn" @click="removeTodo(todoItem.key, index)">
           <button>delete</button>
-          <!--<i class="fas fa-trash-alt"></i>-->
         </span>
       </li>
     </ul>
@@ -21,17 +19,24 @@ export default {
     };
   },
   methods: {
-    removeTodo: function () {},
+    removeTodo: function (todoItem, index) {
+      this.todoItems.splice(index, 1);
+      localStorage.removeItem(todoItem);
+    },
   },
   created: function () {
     if (localStorage.length > 0) {
       for (var i = 0; i < localStorage.length; i++) {
         if (localStorage.key(i) !== "loglevel:webpack-dev-server") {
-          this.todoItems.push(localStorage.key(i));
+          var key = localStorage.key(i);
+          var value = localStorage.getItem(key);
+          this.todoItems.push({ key: key, value: value });
         }
-        //console.log(localStorage.key(i));
       }
     }
+    this.$nextTick(() => {
+      // 데이터가 변경되었으므로 UI를 강제로 다시 렌더링
+    });
   },
 };
 </script>
